@@ -1,0 +1,93 @@
+    |--> Nodejs.com (bajar el instalador /documentación oficial)
+NodeJS --> Entorno de ejecucion de javaScript fuera del navegador. 
+    |--> Utilizado principalmente para aplicaciones, webs, juesgos y chat (estos dos en tiempo real)
+    |--> Asincrono: independecia de tareas (en paralelo tarea1, tarea2 y tarea3)
+    |--> Tiene su propio gestor de paquetes npm (Node Package Manager)
+            NPM |--> permite: Compartir código, y usar librerias, modulos, API, paquetes de otros programadores.
+                |--> gestiona los paquetes y sus actualizaciones.
+                |--> gestiona la dependecia de los proyetos. 
+                |                    |-->Dependencias: todos los modulos que mi proyecto utilice de terceros. 
+                |
+                |--> npmjs.com (documentación oficial de todos los paquetes)
+
+
+
+            CMD
+
+            C:\Users\Usuario>node --version
+            v20.16.0
+
+            C:\Users\Usuario>node           (inicia Node)
+            Welcome to Node.js v20.16.0.
+            Type ".help" for more information.
+            > console.log("Hola,mundo")
+            Hola,mundo
+            undefined
+            > const saludar = (nombre) => console.log(`Hola ${nombre}`)
+            undefined
+            > saludar ("Sim")
+            Hola Sim
+            undefined
+            >
+            (To exit, press Ctrl+C again or Ctrl+D or type .exit)
+            >
+
+
+            EN JS
+
+            console.log("Hola desde archivo index.js")
+
+            const sumar = (n1,n2) => n1+n2;        
+            console.log(sumar(5,6))
+
+
+Package.json--> Descripcion proyecto(nombre, autor,version, etc) y las dependencias de produccion y desarrollo
+                Dependencias de produccion: Necesarias para la ejecucionde la aplicacion
+                Dependencias de desarrollo: Se utilizan solo durante la etapa de creación de la aplicacion
+
+
+Package-lock.json--> Versiones de las dependencias correctas para la ejecucion de la aplicacion
+
+
+node_modules--> Carpeta de las dependencias necesarias para la ejecución. NO SE GUARDA, NI SE SUBE A GITHUB 
+                npm install (vuelve a descargar la carpeta)
+
+
+Modelo de documentación: Front (cliente) envia request al Back (Servidor). Este responde(response) al cliente. Esta comunicacion se realiza mediante el protocolo HTTP
+                    (HTML CSS JS)                       (express Nodejs)
+
+//Montar server en puerto 3000
+const express = require('express')
+const app = express();
+const port = 3000
+
+
+app.listen(3000, ()=>{ //callback 
+    console.log(`Server corriendo en puerto ${port}`)
+})
+
+
+
+Peticiones metodos (Method)-> Get: Pido info al servidor (mostrar productos)
+                            -> Post: Envio info para que servidor procese (Guadar prodcto en db)
+                            -> Put: Metodos para actualizar informacion existente ( Actualizar precio de un producto)
+                            -> Patch: (lo mismo que Put)
+                            -> Delete: Pide al servidor que elimine datos (Eliminar un producto)
+
+
+Sintaxis de Peticiones:
+
+                        |->Función que toma la request, la procesa y envia la response
+app.method(´endPoint, callback´)
+            |-> ruta objetivo (URL)
+
+Ejemplo:
+            app.get(´/´,(req,res)=> {
+                res.send(`He recibido una petición get, alguien solicita datos`)
+            })
+
+            app.post('/',(req,res)=> {
+                res.send('He recibido una petición Post, vienen datos para procesar')
+})
+        
+        (antes del listen)
